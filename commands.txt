@@ -1,0 +1,2 @@
+cd C:\Users\Misha\Desktop\univer\Практика 2 курс\arduino_ui
+pyuic5 window1_2.ui -o window.py
