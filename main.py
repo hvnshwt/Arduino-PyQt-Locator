@@ -1,7 +1,7 @@
 import sys  # sys нужен для передачи argv в QApplication
 import threading
 
-from PyQt5 import QtCore, QtWidgets, QtGui
+from PyQt5 import QtCore, QtWidgets, QtGui, Qt
 from PyQt5.QtSerialPort import QSerialPort, QSerialPortInfo
 from PyQt5.QtCore import QIODevice
 from PyQt5.QtWidgets import QTableWidgetSelectionRange
@@ -55,12 +55,13 @@ class Window(QtWidgets.QMainWindow, window.Ui_MainWindow):
         serial.readyRead.connect(self.on_read)
         self.update_plate()
         self.graphicsView.showGrid(x=True, y=True, alpha=0.5)
-        self.tableWidget.setColumnWidth(0, 124)
-        self.tableWidget.setColumnWidth(1, 90)
-        self.tableWidget.setColumnWidth(2, 90)
+        self.tableWidget.setColumnWidth(0, 138)
+        self.tableWidget.setColumnWidth(1, 100)
+        self.tableWidget.setColumnWidth(2, 100)
         self.tableWidget.cellClicked.connect(self.select_row)
         self.tableWidget.cellDoubleClicked.connect(self.show_recorded_location)
         self.amount_lineEdit.textChanged.connect(self.lines_amount_changed)
+        self.amount_lineEdit.keyPressEvent = self.key_press_event
         self.amont_accept_btn.clicked.connect(self.lines_amount_accept)
         self.period_lineEdit.textChanged.connect(self.period_lineedit_changed)
         self.period_accept_btn.clicked.connect(self.period_accept)
@@ -70,6 +71,7 @@ class Window(QtWidgets.QMainWindow, window.Ui_MainWindow):
         self.play_animation_btn.clicked.connect(self.start_animation)
         self.stop_animation_btn.clicked.connect(self.stop_animation)
         self.tableWidget.setRowCount(25)
+        self.graphicsView.setBackground('#1b1b1b')
         self.update_table()
         self.clear_plot()
 
@@ -147,7 +149,7 @@ class Window(QtWidgets.QMainWindow, window.Ui_MainWindow):
             counterBlink -= 1
 
     def draw(self, x, y):
-        self.graphicsView.plot([x], [y - 50], symbol='t1', symbolBrush=4, name='point', symbolSize=30)
+        self.graphicsView.plot([x], [y - 50], symbol='t1', symbolBrush=5, name='point', symbolSize=30)
 
     def clear_plot(self):
         self.graphicsView.clear()
@@ -235,6 +237,10 @@ class Window(QtWidgets.QMainWindow, window.Ui_MainWindow):
             self.clear_plot()
             # self.tableWidget.clearSelection()
             row -= 1
+
+    def key_press_event(self, event):
+        sender = self.sender()
+        self.statusBar().showMessage(sender.text() + ' was pressed')
 
 
 def main():

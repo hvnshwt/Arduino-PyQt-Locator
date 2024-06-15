@@ -15,6 +15,41 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1324, 716)
+        MainWindow.setStyleSheet("QMainWindow{\n"
+"    background-color: rgb(27, 27, 27);\n"
+"}\n"
+"QLabel{\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"QPushButton{\n"
+"    border-radius: 5px;\n"
+"    background-color: rgb(53, 0, 211);\n"
+"    color: rgb(255, 255, 255);\n"
+"    min-height: 30px;\n"
+"    min-width: 100px;\n"
+"}\n"
+"QPushButton:Disabled{\n"
+"    color: rgb(172, 172, 172);\n"
+"    background-color: rgb(91, 109, 205);\n"
+"}\n"
+"QTableWidget{\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color: rgb(27, 27, 27);\n"
+"}\n"
+"QHeaderView::section{\n"
+"    background-color:rgb(53, 0, 211);\n"
+"    color:  rgb(255, 255, 255);\n"
+"}\n"
+"QScrollBar:vertical {\n"
+"    border:none;\n"
+"    background-color: rgb(27, 27, 27);\n"
+"    width: 12px;\n"
+"}\n"
+"QScrollBar::handle:vertical {\n"
+"    background:rgb(111, 64, 251);\n"
+"    min-height: 20px;\n"
+"    border-radius:5px;\n"
+"}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -33,13 +68,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.label_2 = QtWidgets.QLabel(self.layoutWidget)
+        self.label_2.setStyleSheet("")
         self.label_2.setObjectName("label_2")
         self.horizontalLayout_8.addWidget(self.label_2)
         self.play_animation_btn = QtWidgets.QPushButton(self.layoutWidget)
+        self.play_animation_btn.setMinimumSize(QtCore.QSize(100, 30))
+        self.play_animation_btn.setStyleSheet("")
         self.play_animation_btn.setObjectName("play_animation_btn")
         self.horizontalLayout_8.addWidget(self.play_animation_btn)
         self.stop_animation_btn = QtWidgets.QPushButton(self.layoutWidget)
         self.stop_animation_btn.setEnabled(False)
+        self.stop_animation_btn.setMinimumSize(QtCore.QSize(100, 30))
+        self.stop_animation_btn.setStyleSheet("")
         self.stop_animation_btn.setObjectName("stop_animation_btn")
         self.horizontalLayout_8.addWidget(self.stop_animation_btn)
         self.gridLayout.addLayout(self.horizontalLayout_8, 0, 2, 1, 1)
@@ -50,6 +90,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(9)
         self.label_3.setFont(font)
+        self.label_3.setStyleSheet("")
         self.label_3.setObjectName("label_3")
         self.gridLayout.addWidget(self.label_3, 0, 3, 1, 1)
         self.tableWidget = QtWidgets.QTableWidget(self.layoutWidget)
@@ -73,6 +114,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(9)
         self.settings_boc.setFont(font)
+        self.settings_boc.setStyleSheet("")
         self.settings_boc.setTitle("")
         self.settings_boc.setObjectName("settings_boc")
         self.layoutWidget1 = QtWidgets.QWidget(self.settings_boc)
@@ -255,13 +297,14 @@ class Ui_MainWindow(object):
         self.gridLayout.addItem(spacerItem2, 2, 0, 1, 1)
         spacerItem3 = QtWidgets.QSpacerItem(838, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem3, 3, 0, 1, 5)
-        self.graphicsView = PlotWidget(self.layoutWidget)
-        self.graphicsView.setStyleSheet("background-color: rgb(40, 40, 40);")
-        self.graphicsView.setObjectName("graphicsView")
-        self.gridLayout.addWidget(self.graphicsView, 1, 0, 1, 2)
         self.exit_btn = QtWidgets.QPushButton(self.layoutWidget)
         self.exit_btn.setObjectName("exit_btn")
         self.gridLayout.addWidget(self.exit_btn, 2, 4, 1, 1)
+        self.graphicsView = PlotWidget(self.layoutWidget)
+        self.graphicsView.setEnabled(False)
+        self.graphicsView.setStyleSheet("background-color: rgb(40, 40, 40);")
+        self.graphicsView.setObjectName("graphicsView")
+        self.gridLayout.addWidget(self.graphicsView, 1, 0, 1, 2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1324, 21))

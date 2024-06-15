@@ -13,6 +13,43 @@
   <property name="windowTitle">
    <string>Locator</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+	background-color: rgb(27, 27, 27);
+}
+QLabel{
+	color: rgb(255, 255, 255);
+}
+QPushButton{
+	border-radius: 5px;
+	background-color: rgb(53, 0, 211);
+	color: rgb(255, 255, 255);
+	min-height: 30px;
+	min-width: 100px;
+}
+QPushButton:Disabled{
+	color: rgb(172, 172, 172);
+	background-color: rgb(91, 109, 205);
+}
+QTableWidget{
+	color: rgb(255, 255, 255);
+	background-color: rgb(27, 27, 27);
+}
+QHeaderView::section{
+	background-color:rgb(53, 0, 211);
+	color:  rgb(255, 255, 255);
+}
+QScrollBar:vertical {
+    border:none;
+    background-color: rgb(27, 27, 27);
+    width: 12px;
+}
+QScrollBar::handle:vertical {
+    background:rgb(111, 64, 251);
+    min-height: 20px;
+	border-radius:5px;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
@@ -59,6 +96,9 @@
       <layout class="QHBoxLayout" name="horizontalLayout_8">
        <item>
         <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>Последние записи</string>
          </property>
@@ -66,6 +106,15 @@
        </item>
        <item>
         <widget class="QPushButton" name="play_animation_btn">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>Play</string>
          </property>
@@ -75,6 +124,15 @@
         <widget class="QPushButton" name="stop_animation_btn">
          <property name="enabled">
           <bool>false</bool>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>Stop</string>
@@ -96,6 +154,9 @@
         <font>
          <pointsize>9</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
        </property>
        <property name="text">
         <string>Настройки</string>
@@ -139,6 +200,9 @@
         <font>
          <pointsize>9</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
        </property>
        <property name="title">
         <string/>
@@ -508,17 +572,20 @@
        </property>
       </spacer>
      </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="PlotWidget" name="graphicsView">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(40, 40, 40);</string>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="4">
       <widget class="QPushButton" name="exit_btn">
        <property name="text">
         <string>Выход</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="PlotWidget" name="graphicsView">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(40, 40, 40);</string>
        </property>
       </widget>
      </item>
